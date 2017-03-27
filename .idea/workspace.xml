@@ -25,7 +25,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5249696">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/view/home.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="380">
@@ -48,11 +48,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main_a340c42.css" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/static/css/main_a340c42.css">
+          <file leaf-file-name="main_a340c43.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/css/main_a340c43.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="575">
-                  <caret line="1" column="127013" selection-start-line="1" selection-start-column="127013" selection-end-line="1" selection-end-column="127013" />
+                <state relative-caret-position="18986">
+                  <caret line="1" column="126906" selection-start-line="1" selection-start-column="126906" selection-end-line="1" selection-end-column="126906" />
                   <folding />
                 </state>
               </provider>
@@ -152,7 +152,7 @@
           <file leaf-file-name="ngPlugin-1.1.0.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/ngPlugin-1.1.0.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="288">
+                <state relative-caret-position="345">
                   <caret line="23" column="87585" selection-start-line="23" selection-start-column="87585" selection-end-line="23" selection-end-column="87585" />
                   <folding>
                     <element signature="e#101306#107937#0" expanded="false" />
@@ -474,18 +474,18 @@
       <workItem from="1490060597690" duration="1170000" />
       <workItem from="1490249362186" duration="1298000" />
       <workItem from="1490433245545" duration="1334000" />
-      <workItem from="1490579524202" duration="6314000" />
+      <workItem from="1490579524202" duration="6565000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127150000" />
+    <option name="totallyTimeSpent" value="127401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="257" y="23" width="1815" height="986" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.149482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14938684" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1092,14 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main_a340c42.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="1" column="127013" selection-start-line="1" selection-start-column="127013" selection-end-line="1" selection-end-column="127013" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/main_a340c41.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="553">
@@ -1123,7 +1115,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/ngPlugin-1.1.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="345">
           <caret line="23" column="87585" selection-start-line="23" selection-start-column="87585" selection-end-line="23" selection-end-column="87585" />
           <folding>
             <element signature="e#101306#107937#0" expanded="false" />
@@ -1201,6 +1193,14 @@
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#6;n#div#10;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/main_a340c43.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18986">
+          <caret line="1" column="126906" selection-start-line="1" selection-start-column="126906" selection-end-line="1" selection-end-column="126906" />
+          <folding />
         </state>
       </provider>
     </entry>
