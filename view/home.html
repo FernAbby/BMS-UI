@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main_a340c42.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main_addnew.scss?__inline" media="screen" title="no_title" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap-datetimepicker.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/static/lib/webuploader/webuploader.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/static/lib/bootstrap-timepicker.min.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="/static/css/edit.89bb21d.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/static/css/stEditor.css"/>
+    <script type="text/javascript" src="/static/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/lib/angular.min.js"></script>
+    <script type="text/javascript" src="/static/lib/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/stEditor.css"/>
+    <script type="text/javascript" src="/static/lib/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/static/lib/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="/static/lib/webuploader/webuploader.html5only.min.js"></script>
+    <style>
+        .demo-wrap {
+            padding: 20px 40px;
+        }
+
+        .demo-wrap .title {
+            padding-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .BMap-wrap {
+            width: 575px;
+            margin-top: 20px;
+            background-color: #eee;
+        }
+
+        #BMap0 {
+            width: 574px;
+            height: 500px;
+            color: #45b97c;
+            font-size: 12px;
+        }
+
+        .BMap-wrap img {
+            max-width: none;
+        }
+
+        .item_content .item, .item_content .tag {
+            width: 100px;
+            height: 20px;
+            line-height: 18px;
+            font-size: 14px;
+            border: 1px solid #d8d8d8;
+            background-color: #eee;
+            margin: 5px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .checkbox_group{
+            color: #999;
+            margin-top: 20px;
+        }
+        .checkbox_group label{
+            width: 56px;
+        }
+        .mcheckbox{
+            display:inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            margin-top: -2px;
+        }
+        .checkboxes{
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            vertical-align: top;
+        }
+        .checkbox-wrap{
+            display: inline-block;
+            margin-left: 15px;
+        }
+        .stAutoComplete{
+            display: inline-block;
+            position: relative;
+        }
+        .stAutoComplete ul{
+            margin: 0;
+            background-color: #fff;
+            list-style: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            border: 1px solid #ccc;
+            border-top: none;
+            overflow: hidden;
+            z-index: 1000;
+        }
+        .stAutoComplete ul li{
+            list-style: none;
+            min-height: 30px;
+            line-height: 30px;
+            padding: 0 5px;
+            overflow-x:hidden;
+        }
+        .stAutoComplete ul li:hover{
+            cursor: pointer;
+            background-color: #e0e0e0;
+        }
+        .stAutoComplete ul li.hover{
+            cursor: pointer;
+            color: white;
+            background-color: #43a047;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="/static/lib/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="/static/lib/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/static/lib/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/static/lib/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/static/js/ngPlugin-1.1.0.js"></script>
+<script type="text/javascript" src="/static/lib/tooltip.js"></script>
+<script type="text/javascript" src="/static/lib/bootpopover.js"></script>
+<!--<script type="text/javascript" src="/static/lib/bootpopover.js"></script>-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=v7cmA7sPIOlhyVGISwFzQZqy"></script>
+<div class="iframe_content" ng-controller="appController" style="padding-bottom: 300px">
+    <div class="demo-wrap">
+        <div class="title">stValidate</div>
+        <div class="demo">
+            <input type="text" class="stValidate" ng-model="postData.name" dy-name="name" trigger="focus"
+                   validate-len-max="60" validate-len-max-msg="不能超过60位" validate-not-blank-msg="不能为空"/>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stDropdown0</div>
+        <div class="demo">
+            <select n="3" width="221" ng-model="select" ng-options="o.name for o in options" ng-change="change($event)">
+
+            </select>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stDropdown1</div>
+        <div class="demo">
+            <select ng-model="number" ng-options="num for num in array">
+            </select>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stDropdown2</div>
+        <div class="demo">
+            <select class="stDropdown" ng-model="select" width="120" n="3"
+                    ng-options="o.value as o.name for o in options">
+            </select>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stDropdown3</div>
+        <div class="demo">
+            <select class="stDropdown" width="120" n="3" ng-model="select" options="options">
+                <!--<option value="JIANTU">简途</option>-->
+                <!--<option value="TUNIU">途牛</option>-->
+                <!--<option value="XIECHEN">携程</option>-->
+            </select>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stTooltip</div>
+        <div class="demo">
+            <input type="text" stTooltip class="stTooltip" li="li" name="name" trigger="focus" ng-model="select"/>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stTooltip</div>
+        <div class="demo">
+            <input type="text" stSeatTooltip class="stSeatTooltip" li="seatli" name="name" trigger="focus"
+                   ng-model="select"/>
+        </div>
+    </div>
+    <!--<div class="demo-wrap">-->
+    <!--<div class="title">stDropdown3</div>-->
+    <!--<div class="demo">-->
+    <!--<div class="BMap-wrap">-->
+    <!--<div class="stBGeocoder" mapaddress="address" longitude="postData.lon" latitude="postData.lat" index="0"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="demo-wrap">-->
+    <!--<div class="title">stDropdown3</div>-->
+    <!--<div class="demo">-->
+    <!--<div style="width: 100px;height: 100px;background:blue" class="stContainstips" text="text" img="img"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="demo-wrap">
+        <div class="title">stTimepicker</div>
+        <div class="demo">
+            <input type="text" class="stDatepicker" li="seatli" name="name" trigger="focus" ng-model="time"/>
+        </div>
+    </div>
+    <div class="demo-wrap">
+        <div class="title">stSortable</div>
+        <div class="demo">
+            <div class="stTagsortable item_content" tagsarray="alphet">
+                <div class="tag sort" ng-repeat="a in alphet track by $index" index="{{$index}}" ng-bind="a">a</div>
+            </div>
+        </div>
+    </div>
+    <div class="offset">
+        <div class="car stSeat" data="postData.seatForms" col="postData.col" row="postData.row"
+             number="postData.capacity"></div>
+    </div>
+    <div class="offset">
+        <div>
+            <input type="radio" name="type" class="stRadio" value="A" ng-checked="type=='A'" ng-model="type"/>A
+        </div>
+        <div>
+            <input type="radio" name="type" class="stRadio" ng-checked="type=='B'" value="B" ng-model="type"/>B
+        </div>
+        <div>
+            <input type="radio" name="type" class="stRadio" ng-checked="type=='C'" value="C" ng-model="type"/>C
+        </div>
+        <!--<div ng-repeat="o in options track by $index">-->
+        <!--<input type="radio" name="type" ng-checked="o.checked" class="stRadio" ng-value="o" ng-model="$parent.type"/>{{o.name}}-->
+        <!--</div>-->
+        <input class="stCheckbox" type="checkbox" disabled="disabled" value="ALL" ng-model="selectedAll"/>身份证
+        <div class="checkbox_group">
+            <label>
+                证件类型
+            </label>
+            <div class="checkboxes">
+                <span class="checkbox-wrap">
+                    <input class="stCheckbox" type="checkbox" ng-disabled="true" value="ID" ng-model="types.ID"/>身份证
+                </span>
+                <span class="checkbox-wrap">
+                    <input class="stCheckbox" type="checkbox" value="PASSPORT" ng-model="types.PASSPORT"/>护照
+                </span>
+                <span class="checkbox-wrap">
+                    <input class="stCheckbox" type="checkbox" value="TW_TRAVEL_PERMIT" ng-model="types.TW_TRAVEL_PERMIT"/>台胞证
+                </span>
+                <span class="checkbox-wrap">
+                    <input class="stCheckbox" type="checkbox" value="HKM_TRAVEL_PERMIT" ng-model="types.HKM_TRAVEL_PERMIT"/>回乡证
+                </span>
+            </div>
+        </div>
+        <div>
+            <input type="text" class="stPopover" popover-placement="right" popover-title="兑换记录" datas="options" describe="titles"/>
+            <!--<div class="listtips stPopover" ng-bind="order.denomination+'天'"  popover-placement="top" popover-title="兑换记录" describe="payDescribe" datas="order.paymentRecords"></div>-->
+        </div>
+        <div>
+            <input type="text" class="stComboBox" vcodeurl="vcodeurl" n="n" selectdatas="selectdatas"
+                   selectwidth="selectwidth"/>
+        </div>
+        <textarea class="stEditor" server="/simpletour/images/wechat_product" name="remark" ng-model="scenic.description" ng-blur="blur($event,$index)"></textarea>
+        <!--<div>-->
+            <!--<div class="stAdminCalendar"></div>-->
+        <!--</div>-->
+        <div>
+            <input class="stAutoComplete" style="width:150px" placeholder="请选择供应商" array="options" n="3" id-value="companyId" id-name="companyId" ng-model="company"/>
+        </div>
+        <div>
+            <input class="stAutoComplete" placeholder="请选择供应商" array="titles" n="3" ng-model="title"/>
+        </div>
+        <div class="radio_group">
+            <label style="width:100px">
+                是否区分成人儿童
+            </label>
+            <div class="radioes">
+                    <span class="radio-wrap">
+                        <input type="radio" class="stRadio" value="true" ng-model="isChild"/>是
+                    </span>
+                <span class="radio-wrap">
+                        <input type="radio" class="stRadio" value="false" ng-model="isChild"/>否
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function generateMixed(n) {
+        var jschars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        var res = "";
+        for (var i = 0; i < n; i++) {
+            var id = Math.ceil(Math.random() * 35);
+            res += jschars[id];
+        }
+        return res;
+    }
+    var app = angular.module('app', ['ngPlugin']);
+    app.controller('appController', ['$scope', 'stDateFormat', '$tooltip', function ($scope, stDateFormat, $tooltip) {
+        var date = new Date();
+        console.log(stDateFormat.time(date));
+        console.log(stDateFormat.date(date));
+        $scope.jschars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $scope.postData = {
+            name: '',
+        };
+        $scope.isChild = true;
+        $scope.title = '';
+        $scope.company = '';
+        $scope.companyId = '';
+        $scope.select = '简途';
+        $scope.type = 'B';
+//        $scope.type = {
+//            name: '简途',
+//                    value: 'JIANTU'
+//        }
+        $scope.number = 3;
+        $scope.array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        $scope.alphet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+        $scope.sort = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+        $scope.titles = ['Name','Value','Check','Link'];
+        $scope.options = [{
+            name: '简途',
+            value: 'JIANTU',
+            checked: true,
+            link: 'W'
+        }, {
+            name: '途牛',
+            value: 'TUNIU',
+            checked: false,
+            link: 'W'
+        },{
+            name: '去哪儿',
+            value: 'QUNAER',
+            checked: false,
+            link: 'W'
+        }, {
+            name: '携程',
+            value: 'XIECHEN',
+            checked: false,
+            link: 'W'
+        }];
+        $scope.change = function (e) {
+            console.log($scope.select);
+        }
+        $scope.$watch('select', function () {
+            console.log($scope.select);
+        });
+        setTimeout(function () {
+//            $scope.options = [{
+//                name: '去哪儿',
+//                value: 'QUNAER'
+//            }, {
+//                name: '途牛',
+//                value: 'TUNIU'
+//            }, {
+//                name: '携程',
+//                value: 'XIECHEN'
+//            }];
+//            $scope.type = 'C';
+            $scope.$apply();
+        }, 3000);
+        $scope.li = {
+            name: {
+                tips: [{
+                    tip: '这是一个测试111'
+                }, {
+                    tip: '这是一个测试222'
+                }],
+            }
+        };
+        $scope.seatli = [['这是一个测试'], ['这是一个测试二']];
+        $scope.text = '/static/images1/bg-img.png';
+        $scope.img = '/static/images1/bg-img.png';
+        $scope.time = 2;
+        $scope.$watch('time', function () {
+            console.log($scope.time);
+        });
+        $scope.day = 2;
+        $scope.postData = {
+            name: null || '',
+            type: null || 'LARGE',
+            row: null || 7,
+            col: null || 5,
+            capacity: null || 0,
+            seatForms: null || [],
+            id: null,
+            version: null
+        };
+        $scope.types = {
+            ID: true,
+            PASSPORT: false,
+            TW_TRAVEL_PERMIT: true,
+            HKM_TRAVEL_PERMIT: false
+        }
+        $scope.selectedALL = true;
+        $scope.$watch('testType', function () {
+            console.log($scope.testType);
+        });
+        $scope.selectdatas = [{
+            name: 'A',
+            url: 'http://A'
+        }, {
+            name: 'B',
+            url: 'http://B'
+        }, {
+            name: 'E',
+            url: 'http://E'
+        }, {
+            name: 'C',
+            url: 'http://C'
+        }, {
+            name: 'D',
+            url: 'http://D'
+        }];
+        $scope.vcodeurl = 'http://static/images1/bg-img.png';
+        $scope.selectwidth = 200;
+        $scope.n = '4';
+//        if(){
+//
+//        }
+//        $scope.$watch('type',function(){
+//            console.log($scope.type);
+//        });
+//        console.log($('.testA').is(':checked'));
+    }]);
+</script>
+</body>
+</html>

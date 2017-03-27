@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-size: 12px;
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif
+}
+
+html, body {
+  width: 100%;
+  height: 100%
+}
+
+.clear {
+  clear: both
+}
+
+.grey {
+  color: #a1a1a1
+}
+
+a {
+  text-decoration: none;
+  color: #757575;
+  cursor: pointer
+}
+
+a:link {
+  text-decoration: none
+}
+
+a:visited {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: none
+}
+
+a:active {
+  text-decoration: none
+}
+
+a.decoration {
+  text-decoration: underline
+}
+
+.nav {
+  float: left;
+  height: auto;
+  min-height: 100%;
+  position: relative
+}
+
+.maincover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1040;
+  background-color: #999;
+  opacity: .3;
+  filter: alpha(opacity=.3)
+}
+
+.firstNav {
+  position: relative;
+  float: left;
+  width: 64px;
+  height: 100%;
+  border-right: 1px solid #d7d7d7
+}
+
+.firstNav > div:first-child {
+  padding-bottom: 30px;
+  min-height: 100%;
+  box-sizing: border-box
+}
+
+.firstNav .open, .firstNav .close {
+  position: relative;
+  margin-top: -30px;
+  width: 100%;
+  height: 30px;
+  cursor: pointer
+}
+
+.firstNav .close {
+  background: url(/static/images/main.png) -124px -475px
+}
+
+.firstNav .open {
+  background: url(/static/images/main.png) -30px -320px
+}
+
+.firstNav .logo {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 64px;
+  height: 88px;
+  border-bottom: 1px solid #d7d7d7
+}
+
+.firstNav .logo img {
+  border: 0
+}
+
+.firstNav .menu {
+  list-style: none
+}
+
+.firstNav .menu li.active {
+  border-right: 3px solid #d84527
+}
+
+.firstNav .menu li {
+  cursor: pointer;
+  display: list-item;
+  width: 61px;
+  height: 26px;
+  margin: 38px 0
+}
+
+.firstNav .menu li:first-child {
+  margin-top: 19px
+}
+
+.firstNav .menu li div {
+  width: 61px;
+  display: table-cell;
+  box-sizing: border-box;
+  height: 26px;
+  text-align: center
+}
+
+.firstNav .menu li div.describe {
+  display: none;
+  width: 51px;
+  vertical-align: middle;
+  background: 0 0;
+  text-align: left
+}
+
+.wrap {
+  float: left;
+  height: 100%
+}
+
+.secondNav {
+  display: none;
+  width: 167px;
+  height: 100%;
+  border-right: 1px solid #d7d7d7
+}
+
+.secondNav .overview {
+  padding: 0 10px;
+  border-top: 3px solid #d84527
+}
+
+.secondNav .overview div {
+  color: #757575
+}
+
+.secondNav .overview .title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000
+}
+
+.secondNav .overview .title span {
+  font-size: 14px
+}
+
+.secondNav .overview .title span.refresh {
+  float: right;
+  background: url(/static/images/main.png) -65px -12px;
+  height: 19px;
+  width: 30px
+}
+
+.secondNav .news {
+  padding: 0 10px
+}
+
+.secondNav .news .content {
+  margin-top: 10px
+}
+
+.secondNav .news .content div {
+  display: table-cell;
+  width: 125px;
+  height: 100%;
+  vertical-align: top
+}
+
+.secondNav .news .content .rightArrow {
+  width: 12px;
+  text-align: center;
+  vertical-align: middle
+}
+
+.secondNav .news .content .rightArrow img {
+  border: 0
+}
+
+.secondNav .category {
+  padding: 0 10px
+}
+
+.secondNav .category .category_img {
+  width: 42px;
+  margin: 0 auto;
+  overflow: hidden
+}
+
+.secondNav .category .category_img img {
+  border: 0
+}
+
+.secondNav .category span.click {
+  color: #d84527
+}
+
+.secondNav .category span.click img {
+  margin-left: -42px
+}
+
+.secondNav .category span {
+  margin-top: 15px;
+  float: left;
+  width: 45%;
+  height: 62px;
+  margin-right: 5px;
+  display: table-cell;
+  text-align: center
+}
+
+.secondNav .category span div {
+  text-align: center
+}
+
+.secondNav .category span .img {
+  height: 45px;
+  background: url(/static/images/nav.png)
+}
+
+.secondNav .category .hotel .img {
+  background-position: -1200px -904px
+}
+
+.secondNav .category .scenic .img {
+  background-position: -205px -12px
+}
+
+.secondNav .category .catering .img {
+  background-position: -126px -81px
+}
+
+.secondNav .tags {
+  padding: 0 10px
+}
+
+.secondNav .tags label {
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px
+}
+
+.secondNav .tags label input {
+  margin: 0 5px
+}
+
+.secondNav .title {
+  font-size: 14px;
+  margin-top: 40px;
+  font-weight: 900
+}

@@ -1,0 +1,123 @@
+*{
+    outline: none;
+}
+.radio_group{
+    margin-top: 20px;
+}
+.radio_group label{
+    text-align: center;
+    display: inline-block;
+    color: #999;
+    width: 56px;
+    height: 25px;
+    line-height: 25px;
+}
+.radio_group .radioes{
+    display: inline-block;
+    color: #999;
+    height: 25px;
+    line-height: 25px;
+}
+.radio_group .radioes .radio-wrap{
+    margin-left: 15px;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+}
+.radio_group .radioes .radio-wrap .radio{
+    position: relative;
+    margin-right: 2px;
+    float: left;
+    padding: 0;
+    width: 20px;
+    height: 25px;
+    background: url(/static/images/radio.png) no-repeat -1px 3px;
+}
+.radio_group .radioes .radio-wrap .radio.selected {
+    background-position: -55px 3px;
+}
+.radio_group .radioes .radio-wrap .radio input[type=radio]{
+    opacity: 0;
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+.input_noborder{
+    margin-top: 20px;
+}
+.input_noborder .title{
+    width: 56px;
+    text-align: center;
+    color: #999;
+    display: inline-block;
+    vertical-align: top;
+}
+.input_noborder .content{
+    display: inline-block;
+    vertical-align: top;
+}
+.input_noborder .content textarea{
+    width: 231px;
+    height: 120px;
+    outline: none;
+}
+
+.inputIMG{
+    margin-top: 10px;
+}
+.inputIMG .title{
+    width: 56px;
+    text-align: center;
+    color: #999;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+}
+.inputIMG .album{
+    display: inline-block;
+    vertical-align: top;
+}
+.AMap-wrap{
+    width: 575px;
+    margin-top: 20px;
+    background-color: #eee;
+}
+#AMap{
+    width: 574px;
+    height: 500px;
+    color: #45b97c;
+    font-size: 12px;
+}
+.BMap-wrap{
+    width: 575px;
+    margin-top: 20px;
+    background-color: #eee;
+}
+#BMap{
+    width: 574px;
+    height: 500px;
+    color: #45b97c;
+    font-size: 12px;
+}
+.textarea_group{
+    margin-top: 20px;
+}
+.textarea_group .title{
+    display: inline-block;
+    vertical-align:top;
+    color: #999;
+    width:72px;
+    text-align:center;
+}
+.textarea_group textarea{
+    width: 191px;
+    height: 90px;
+}
+textarea.error{
+    border: 1px solid #d84527;
+}

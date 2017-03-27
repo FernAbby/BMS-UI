@@ -1,0 +1,38 @@
+.alertmsg {
+  position: fixed;
+  height: 88px;
+  width: 100%;
+  top: 0;
+  background: #d84527;
+  padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 10000
+}
+
+.alertmsg > div {
+  float: right;
+  margin-top: 28px
+}
+
+.alertmsg > div:first-child {
+  float: left
+}
+
+.alertmsg .alertmsg_title {
+  font-size: 18px;
+  color: #fff
+}
+
+.alertmsg .alertmsg_detailed {
+  font-size: 12px;
+  color: #fff
+}
+
+.alertmsg button {
+  height: 14px;
+  background: url(/static/images/close.png) no-repeat;
+  border: 0;
+  color: #fff;
+  text-indent: 18px;
+  margin-top: 10px
+}

@@ -1,0 +1,49 @@
+.checkbox_group{
+    color: #999;
+    margin-top: 20px;
+}
+.checkbox_group label{
+    width: 56px;
+}
+.checkboxes{
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: top;
+}
+.checkbox-wrap{
+    display: inline-block;
+    margin-left: 15px;
+}
+.stAutoComplete{
+    display: inline-block;
+    position: relative;
+}
+.stAutoComplete ul{
+    margin: 0;
+    background-color: #fff;
+    list-style: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    overflow: hidden;
+    z-index: 1000;
+}
+.stAutoComplete ul li{
+    list-style: none;
+    min-height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    overflow-x:hidden;
+}
+.stAutoComplete ul li:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+}
+.stAutoComplete ul li.hover{
+    cursor: pointer;
+    color: white;
+    background-color: #43a047;
+}
