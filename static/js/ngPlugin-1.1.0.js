@@ -237,6 +237,57 @@ angular.module('ngPlugin', [])
             }]
         }
     })
+    .factory('stAutoValidate',['$timeout', 'alert',function ($timeout,alert) {
+        return function (options) {
+            var defaultOptions = {
+                form: false,
+                success: function(){
+
+                },
+                fail: function(){
+
+                },
+                isAlert: true
+            }
+            var opt = angular.extend(defaultOptions, options);
+            if (opt.form && opt.form.$invalid) {
+                var errors = false;
+                angular.forEach(opt.form.$error, function (i, v) {
+                    if (v.indexOf('_validate') > 0 && i) {
+                        var enable = angular.element('input[name=' + i[0].$name + ']').attr('disabled');
+                        if (enable && 'disabled' == enable) {
+                            i[0].$invalid = false;
+                            i[0].$valid = true;
+                            return;
+                        }
+                        opt.form.$error[v][0].$dirty = true;
+                        opt.form.$error[v][0].$pristine = false;
+                        errors = true;
+                    }
+                });
+                if (errors) {
+                    if(opt.isAlert){
+                        alert.alert({
+                            reason: '请检查表单填写是否正确',
+                            message: '保存或编辑失败',
+                            type: 'fail',
+                            delay: '3'
+                        });
+                        $timeout(function(){
+                            opt.fail();
+                        },3000);
+                        return false;
+                    }else{
+                        opt.fail();
+                    }
+                }
+            }else if(!opt.form){
+                console.warn('opt.form is undefined!');
+            }else{
+                opt.success();
+            }
+        }
+    }])
     .factory('ngSubmit', ['$http', 'alert', function ($http, alert) {
         return function (options) {
             var defaultOptions = {
@@ -259,57 +310,44 @@ angular.module('ngPlugin', [])
             angular.element(o.ele).attr('disabled', 'disabled');
             o.beforePost();
             //,{headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}} 修改不用json传数据
-
-            if (o.form && o.form.$invalid) {
-                angular.forEach(o.form.$error, function (i, v) {
-                    if (v.indexOf('_validate') > 0 && i) {
-                        o.form.$error[v][0].$dirty = true;
-                        o.form.$error[v][0].$pristine = false;
-                    }
-                })
-                angular.element(o.ele).attr('disabled', false);
-                alert.alert({
-                    reason: '请检查表单填写是否正确',
-                    message: '保存或编辑失败',
-                    type: 'fail',
-                    delay: '3'
-                })
-            } else {
-                $http.post(url, o.data)
-                    .success(function (data) {
-                        if (data.code == 0) {
-                            data.detail = data.detail ? data.detail : data.reason;
+            stAutoValidate({
+                form: o.form,
+                success: function(){
+                    $http.post(url, o.data)
+                        .success(function (data) {
+                            if (data.code == 0) {
+                                data.detail = data.detail ? data.detail : data.reason;
+                                alert.alert({
+                                    reason: data.detail ? data.detail : '此提示3秒后关闭',
+                                    message: data.msg ? data.msg : '保存或编辑成功',
+                                    type: 'success',
+                                    delay: '3'
+                                })
+                                o.success(data);
+                            } else {
+                                data.detail = data.detail ? data.detail : data.reason;
+                                alert.alert({
+                                    reason: data.detail ? data.detail : '此提示3秒后关闭',
+                                    message: data.msg ? data.msg : '保存或编辑失败',
+                                    type: 'fail',
+                                    delay: '3'
+                                })
+                                o.failed(data);
+                                angular.element(o.ele).attr('disabled', false);
+                            }
+                        })
+                        .error(function (data) {
                             alert.alert({
-                                reason: data.detail ? data.detail : '此提示3秒后关闭',
-                                message: data.msg ? data.msg : '保存或编辑成功',
-                                type: 'success',
-                                delay: '3'
-                            })
-                            o.success(data);
-                        } else {
-                            data.detail = data.detail ? data.detail : data.reason;
-                            alert.alert({
-                                reason: data.detail ? data.detail : '此提示3秒后关闭',
-                                message: data.msg ? data.msg : '保存或编辑失败',
+                                reason: '此提示3秒后关闭',
+                                message: '网络异常，请重试！',
                                 type: 'fail',
                                 delay: '3'
                             })
-                            o.failed(data);
+                            o.error(data);
                             angular.element(o.ele).attr('disabled', false);
-                        }
-                    })
-                    .error(function (data) {
-                        alert.alert({
-                            reason: '此提示3秒后关闭',
-                            message: '网络异常，请重试！',
-                            type: 'fail',
-                            delay: '3'
                         })
-                        o.error(data);
-                        angular.element(o.ele).attr('disabled', false);
-                    })
-            }
-
+                }
+            });
         }
     }])
     .factory('$modalStack', ['$animate', '$timeout', '$document', '$compile', '$rootScope', '$$stackedMap',

@@ -190,7 +190,7 @@
         }
 
     }]);
-    app.controller('modalController',function($scope,alert){
+    app.controller('modalController',function($scope,alert,$modalInstance,stAutoValidate){
         $('.titleModal_content').niceScroll({cursorborder:'',cursorcolor:'#000',cursoropacitymax:'0.5'});
         $('.titleModal_content').getNiceScroll().resize();
         $('.titleModal_content').niceScroll({cursorborder:'',cursorcolor:'#000',cursoropacitymax:'0.5'});
@@ -213,34 +213,16 @@
             }]
         };
         $scope.ok = function () {
-            if($scope.forms && $scope.forms.$invalid){
-                var errors = false;
-                angular.forEach($scope.forms.$error,function(i,v){
-                    if(v.indexOf('_validate')>0 && i){
-                        var enable = angular.element('input[name=' + i[0].$name + ']').attr('disabled');
-                        if (enable && 'disabled' == enable) {
-                            i[0].$invalid = false;
-                            i[0].$valid = true;
-                            return;
-                        }
-
-                        $scope.forms.$error[v][0].$dirty = true;
-                        $scope.forms.$error[v][0].$pristine = false;
-                        errors = true;
-                    }
-                });
-
-                if (errors) {
-                    alert.alert({
-                        reason: '请检查表单填写是否正确',
-                        message: '保存或编辑失败',
-                        type: 'fail',
-                        delay: '3'
-                    });
-                    return false;
+            stAutoValidate({
+                form: $scope.forms,
+                success: function(){
+                    console.log('验证成功!');
+                },
+                fail: function(){
+                    console.log('验证失败!');
                 }
-            }
-            $modalInstance.close($scope.selectedItems);
+            });
+//            $modalInstance.close($scope.selectedItems);
         };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
