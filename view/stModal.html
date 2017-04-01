@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main_a340c42.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main_addnew.scss?__inline" media="screen" title="no_title" charset="utf-8"/>
+    <script type="text/javascript" src="/static/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/static/lib/angular.min.js"></script>
+    <style>
+        .dialog, .modal-dialog{
+            padding: 0;
+        }
+        .modal-dialog .titleModal_header{
+            height: 20px;
+            line-height: 20px;
+            background-color: #eee;
+            font-size: 20px;
+            color: #757575;
+            padding: 20px;
+        }
+        .modal-dialog .titleModal_content{
+            min-height: 300px;
+            max-height: 376px;
+            padding: 20px 30px;
+            overflow-y: auto;
+        }
+        .modal-dialog .titleModal_footer{
+            background-color: #eee;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .modal-dialog .titleModal_footer .ops{
+            display: inline-block;
+            float: right;
+            color: #999;
+        }
+        .modal-dialog .titleModal_footer .ops button{
+            padding: 4px 8px;
+            color: #fff;
+            display: inline-block;
+            border-radius: 4px;
+            border: none;
+            /*background-color: #45b97c;*/
+            background-color: #43a047;
+            margin-left: 15px;
+        }
+        .input_group{
+            width: 280px;
+            height: 36px;
+            box-sizing: border-box;
+            border: 1px solid #d8d8d8;
+            line-height: 34px;
+        }
+        .input_group label{
+            display: inline-block;
+            text-align: center;
+            color: #999;
+            width: 76px;
+            height: 34px;
+            float: left;
+        }
+        .input_group .cutline {
+            height: 22px;
+            margin-top: 6px;
+            float: left;
+            border-left: 1px solid #d8d8d8;
+        }
+        .input_group input {
+            display: inline-block;
+            float: left;
+            box-sizing: border-box;
+            color: #4a4a4a;
+            width: 201px;
+            border: 0;
+            height: 34px;
+            padding: 11px 30px 11px 10px;
+        }
+        .input_group:after{
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            clear: both;
+        }
+        .input_group{
+            float: left;
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+        .day{
+            margin-bottom: 10px;
+        }
+        .day .title_day{
+            color: #999;
+        }
+        .clear:after{
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            clear: both;
+        }
+        .input_tips{
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body ng-controller="appController">
+<div class="iframe_content" style="padding-bottom: 300px">
+   <div class="iframe_content">
+       <div class="offset">
+           <div class="input_group">
+               <label>姓名</label>
+               <div class="cutline"></div>
+               <span><input type="text" dy-name="name" ng-model="postData.name" ng-click="openModal($event)"/></span>
+           </div>
+       </div>
+   </div>
+</div>
+<script type="text/ng-template" id="ModalContent.html">
+    <div class="titleModal_header">特色标签</div>
+    <div class="titleModal_content">
+        <form name="forms">
+            <div class="day clear" ng-repeat="day in postData.days track by $index" ng-cloak="">
+                <div class="title_day" ng-cloak="">DAY {{$index+1}}</div>
+                <div class="input_group">
+                    <label>助理薪资</label>
+                    <div class="cutline"></div>
+                    <span><input type="text" dy-name="laborage{{$index+1}}" ng-model="day.laborage" class="stValidate" trigger="focus" validate-not-blank-msg="不能为空" validate-min="0" validate-min-msg="最小值为0" validate-max="99999.99" validate-max-msg="最大值为99999.99"  validate-decimal="2" validate-decimal-msg="保留小数点后2位"/></span>
+                </div>
+                <div class="input_group">
+                    <label>餐补</label>
+                    <div class="cutline"></div>
+                    <span><input type="text" dy-name="meal{{$index+1}}" ng-model="day.meal" class="stValidate" trigger="focus" validate-not-blank-msg="不能为空" validate-min="0" validate-min-msg="最小值为0" validate-max="99999.99" validate-max-msg="最大值为99999.99"  validate-decimal="2" validate-decimal-msg="保留小数点后2位"//></span>
+                </div>
+                <div class="input_group">
+                    <label>住宿</label>
+                    <div class="cutline"></div>
+                    <span><input type="text" dy-name="accommodation{{$index+1}}" ng-model="day.accommodation" class="stValidate" trigger="focus" validate-not-blank-msg="不能为空" validate-min="0" validate-min-msg="最小值为0" validate-max="99999.99" validate-max-msg="最大值为99999.99"  validate-decimal="2" validate-decimal-msg="保留小数点后2位"//></span>
+                </div>
+                <div class="input_group">
+                    <label>其他费用名称</label>
+                    <div class="cutline"></div>
+                    <span><input type="text" dy-name="expenseName{{$index+1}}" ng-model="day.expenseName" trigger="focus" class="stValidate" validate-len-max="10" validate-len-max-msg="名字最长不超过十位"/></span>
+                </div>
+                <div class="input_group">
+                    <label>其他费用</label>
+                    <div class="cutline"></div>
+                    <span><input type="text" dy-name="amount{{$index+1}}" ng-model="day.amount" class="stValidate" trigger="focus" validate-not-blank-msg="不能为空" validate-min="0" validate-min-msg="最小值为0" validate-max="99999.99" validate-max-msg="最大值为99999.99"  validate-decimal="2" validate-decimal-msg="保留小数点后2位"//></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="titleModal_footer">
+        <div class="ops">
+            <a ng-click="cancel()">取&nbsp;&nbsp;消</a>
+            <button ng-click="ok()">确认添加</button>
+        </div>
+    </div>
+</script>
+<script type="text/javascript" src="/static/lib/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/static/js/ngPlugin-1.1.0.js"></script>
+<script type="text/javascript">
+    console.log('hehhe');
+    var app = angular.module('app', ['ngPlugin']);
+    app.controller('appController', ['$scope', 'stModal','alert',function ($scope,stModal,alert) {
+        $scope.postData = {
+            name: '',
+        }
+        $scope.openModal = function($event){
+            stModal({
+                templateUrl: 'ModalContent.html',
+                controller: 'modalController',
+                resolve: {
+                    items: function(){
+                        return {
+
+                        }
+                    }
+                },
+                ok: function(){
+
+                },
+                cancel: function(){
+
+                }
+            });
+        }
+
+    }]);
+    app.controller('modalController',function($scope,alert){
+        $('.titleModal_content').niceScroll({cursorborder:'',cursorcolor:'#000',cursoropacitymax:'0.5'});
+        $('.titleModal_content').getNiceScroll().resize();
+        $('.titleModal_content').niceScroll({cursorborder:'',cursorcolor:'#000',cursoropacitymax:'0.5'});
+        $('.titleModal_content').getNiceScroll().resize();
+        $scope.postData= {
+            days: [{
+                day: '',
+                laborage: '',
+                meal: '',
+                accommodation: '',
+                expenseName: '',
+                amount: ''
+            },{
+                day: '',
+                laborage: '',
+                meal: '',
+                accommodation: '',
+                expenseName: '',
+                amount: ''
+            }]
+        };
+        $scope.ok = function () {
+            if($scope.forms && $scope.forms.$invalid){
+                var errors = false;
+                angular.forEach($scope.forms.$error,function(i,v){
+                    if(v.indexOf('_validate')>0 && i){
+                        var enable = angular.element('input[name=' + i[0].$name + ']').attr('disabled');
+                        if (enable && 'disabled' == enable) {
+                            i[0].$invalid = false;
+                            i[0].$valid = true;
+                            return;
+                        }
+
+                        $scope.forms.$error[v][0].$dirty = true;
+                        $scope.forms.$error[v][0].$pristine = false;
+                        errors = true;
+                    }
+                });
+
+                if (errors) {
+                    alert.alert({
+                        reason: '请检查表单填写是否正确',
+                        message: '保存或编辑失败',
+                        type: 'fail',
+                        delay: '3'
+                    });
+                    return false;
+                }
+            }
+            $modalInstance.close($scope.selectedItems);
+        };
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });
+</script>
+</body>
+</html>
